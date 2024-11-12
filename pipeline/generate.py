@@ -17,7 +17,7 @@ import dataeval.coqa as coqa
 import dataeval.nq_open as nq_open
 import dataeval.triviaqa as triviaqa
 import dataeval.SQuAD as SQuAD
-import dataeval.TruthfulQA as TruthfulQA
+# import dataeval.TruthfulQA as TruthfulQA
 import models
 import utils
 from func.metric import *

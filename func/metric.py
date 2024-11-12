@@ -180,7 +180,7 @@ def getEigenIndicator_v0(hidden_states, num_tokens):
     last_embeddings = torch.zeros(hidden_states[1][-1].shape[0], hidden_states[1][-1].shape[2]).to("cuda")
     for ind in range(hidden_states[1][-1].shape[0]):
         last_embeddings[ind,:] = hidden_states[num_tokens[ind]-2][selected_layer][ind,0,:]
-    CovMatrix = torch.cov(last_embeddings).cpu().numpy().astype(np.float)
+    CovMatrix = torch.cov(last_embeddings).cpu().numpy().astype(np.float16)
     u, s, vT = np.linalg.svd(CovMatrix+alpha*np.eye(CovMatrix.shape[0]))
     eigenIndicator = np.mean(np.log10(s))
     return eigenIndicator, s

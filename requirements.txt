@@ -8,10 +8,10 @@ sentence-transformers==3.3.0
 torchmetrics
 openai
 rouge_score
-numpy
+numpy==2.0.2
 scikit-learn
 evaluate
 matplotlib
 selfcheckgpt
 sentencepiece
-protobuf
+protobuf==5.28.3

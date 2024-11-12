@@ -38,6 +38,7 @@ parser.add_argument('--project_ind', type=int, default=0)
 
 
 args = parser.parse_args()
+os.makedirs("./data/output/", exist_ok=True)
 logInfo = open("./data/output/logInfo_{}_{}.txt".format(args.model, args.dataset), mode="w",encoding="utf-8")
 
 
@@ -75,8 +76,8 @@ def get_generation_config(input_ids, tokenizer, data_name):
 def get_generations(model_name:str, args, seed=1, old_sequences=None, max_num_gen_once=args.num_generations_per_prompt):
     device = args.device
     model, tokenizer = models.load_model_and_tokenizer(model_name, args.device)
-    SenSimModel = SentenceTransformer('./data/weights/nli-roberta-large')
-    bertscore = BERTScore(model_name_or_path="./data/weights/bert-base/", device="cuda")
+    SenSimModel = SentenceTransformer('sentence-transformers/nli-roberta-large')
+    bertscore = BERTScore(model_name_or_path="google-bert/bert-base-uncased", device="cuda")
 
     utils.seed_everything(seed)
     dataset = get_dataset_fn(args.dataset)(tokenizer)
